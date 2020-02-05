@@ -18,14 +18,31 @@ int main(void)
 	RCC -> AHBENR |= RCC_AHBENR_GPIOAEN;                   //zapnuti hodin
 	GPIOA -> MODER |= GPIO_MODER_MODER5_0;                 //
 
+	uint8_t pole[32] = {1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,1,0,1};
+	uint8_t j=0;
 	//  GPIOA->BSRR = (1<<5); // set
 	//  GPIOA->BRR = (1<<5); // reset
-	//GPIOA->ODR ^= (1<<5); // toggle
+	//  GPIOA->ODR ^= (1<<5); // toggle
 
-
+	//blikani
+/*
 	for(;;)
 		{
 		  GPIOA->ODR ^= (1<<5); // toggle
 		  for (volatile uint32_t i = 0; i < 100000; i++) {}
 		};
+*/
+
+	for(;;)
+	    {
+			if(pole[j]==1)
+			  {GPIOA -> BSRR = (1<<5);}
+			else
+			  {GPIOA -> BRR = (1<<5);}
+
+			for (volatile uint32_t i = 0; i < 100000; i++) {};
+			j++;
+			if (j ==33) j=0;
+		}
+
 }
