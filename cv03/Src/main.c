@@ -13,55 +13,31 @@
 
 #include <stdio.h>
 #include "stm32f0xx.h"
+#include "sct.h"
+
+
 
 int main(void)
 {
-	RCC->AHBENR |= RCC_AHBENR_GPIOAEN;                   //zapnuti hodin
-	GPIOA->MODER |= GPIO_MODER_MODER5_0;                 //
+	sct_init();
 
-	uint8_t pole[32] = {1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,1,0,1}; //morseovka sos
-	//  GPIOA->BSRR = (1<<5); // set
-	//  GPIOA->BRR = (1<<5); // reset
-	//  GPIOA->ODR ^= (1<<5); // toggle
+	sct_led(0x7A5C36DE);
 
-	//blikani
-/*
-	for(;;)
-		{
-		  GPIOA->ODR ^= (1<<5); // toggle
-		  for (volatile uint32_t i = 0; i < 100000; i++) {}
-		};
-*/
-/*
-	for(;;)
-	    {
-			if(pole[j]==1)
-			  {GPIOA->BSRR = (1<<5);}
-			else
-			  {GPIOA->BRR = (1<<5);}
+	for (volatile uint32_t j = 0; j<31; j++) {};
 
-			for(volatile uint32_t i = 0; i < 100000; i++)
-				;
 
-			j++;
-			if (j == sizeof(pole)) j = 0;
-		}
-*/
-	uint32_t SOS = 0b1010100111011101110010101;   //morseovka SOS
-    for(;;)
-        {
-	    for (uint32_t i = 0; i < 32; i++){        //bitovy posuv a zkoumani zda-li jednicka nebo 0
-		    if ((SOS<<i) & 0x80000000)
-		        {
-			    GPIOA->BSRR = (1<<5); // set
-			    }
-			else
-			    {
-				GPIOA->BRR = (1<<5); // reset
-			    }
-			for (volatile uint32_t t = 0; t < 100000; t++) {}
-		}
-			for (volatile uint32_t j = 0; j < 900000; j++) {} //delsi cekani
+
+
+    while(1){
+    	uint32_t i,j;
+    	for (i = 0; i < 1000; i++)
+    	{
+    		sct_value(i);
+        	for(j = 0; j < 100000; j++){}
+
+    	}
+
+
+
     }
-
 }
