@@ -176,7 +176,7 @@ int main(void)
  800019e:	62bb      	str	r3, [r7, #40]	; 0x28
     for(;;)
         {
-	    for (uint32_t i = 0; i < 32; i++){
+	    for (uint32_t i = 0; i < 32; i++){        //bitovy posuv a zkoumani zda-li jednicka nebo 0
  80001a0:	2300      	movs	r3, #0
  80001a2:	62fb      	str	r3, [r7, #44]	; 0x2c
  80001a4:	e01a      	b.n	80001dc <main+0xd4>
@@ -186,7 +186,7 @@ int main(void)
  80001aa:	409a      	lsls	r2, r3
  80001ac:	1e13      	subs	r3, r2, #0
  80001ae:	da04      	bge.n	80001ba <main+0xb2>
-		        {     //bitovy posuv a zkoumani zda-li jednicka nebo 0
+		        {
 			    GPIOA->BSRR = (1<<5); // set
  80001b0:	2390      	movs	r3, #144	; 0x90
  80001b2:	05db      	lsls	r3, r3, #23
@@ -213,14 +213,14 @@ int main(void)
  80001d0:	4a0b      	ldr	r2, [pc, #44]	; (8000200 <main+0xf8>)
  80001d2:	4293      	cmp	r3, r2
  80001d4:	d9f8      	bls.n	80001c8 <main+0xc0>
-	    for (uint32_t i = 0; i < 32; i++){
+	    for (uint32_t i = 0; i < 32; i++){        //bitovy posuv a zkoumani zda-li jednicka nebo 0
  80001d6:	6afb      	ldr	r3, [r7, #44]	; 0x2c
  80001d8:	3301      	adds	r3, #1
  80001da:	62fb      	str	r3, [r7, #44]	; 0x2c
  80001dc:	6afb      	ldr	r3, [r7, #44]	; 0x2c
  80001de:	2b1f      	cmp	r3, #31
  80001e0:	d9e1      	bls.n	80001a6 <main+0x9e>
-			}
+		}
 			for (volatile uint32_t j = 0; j < 900000; j++) {} //delsi cekani
  80001e2:	2300      	movs	r3, #0
  80001e4:	603b      	str	r3, [r7, #0]
@@ -232,7 +232,7 @@ int main(void)
  80001f0:	4a04      	ldr	r2, [pc, #16]	; (8000204 <main+0xfc>)
  80001f2:	4293      	cmp	r3, r2
  80001f4:	d9f8      	bls.n	80001e8 <main+0xe0>
-	    for (uint32_t i = 0; i < 32; i++){
+	    for (uint32_t i = 0; i < 32; i++){        //bitovy posuv a zkoumani zda-li jednicka nebo 0
  80001f6:	e7d3      	b.n	80001a0 <main+0x98>
  80001f8:	40021000 	.word	0x40021000
  80001fc:	0153bb95 	.word	0x0153bb95
