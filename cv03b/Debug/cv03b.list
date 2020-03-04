@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00004bd4  00000000  00000000  00020034  2**0
+ 12 .debug_info   00004be2  00000000  00000000  00020034  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 00001117  00000000  00000000  00024c08  2**0
+ 13 .debug_abbrev 00001126  00000000  00000000  00024c16  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00000598  00000000  00000000  00025d20  2**3
+ 14 .debug_aranges 00000598  00000000  00000000  00025d40  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 000004f0  00000000  00000000  000262b8  2**3
+ 15 .debug_ranges 000004f0  00000000  00000000  000262d8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  0000b540  00000000  00000000  000267a8  2**0
+ 16 .debug_macro  0000b540  00000000  00000000  000267c8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   0000549c  00000000  00000000  00031ce8  2**0
+ 17 .debug_line   0000549e  00000000  00000000  00031d08  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    0004079a  00000000  00000000  00037184  2**0
+ 18 .debug_str    0004079a  00000000  00000000  000371a6  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  0007791e  2**0
+ 19 .comment      0000007b  00000000  00000000  00077940  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00001270  00000000  00000000  0007799c  2**2
+ 20 .debug_frame  00001270  00000000  00000000  000779bc  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -665,7 +665,7 @@ void Error_Handler(void)
 	...
 
 0800047c <sct_led>:
-       },
+	          },
  };
 
 
@@ -675,6 +675,7 @@ void sct_led(uint32_t value)
  800047e:	b084      	sub	sp, #16
  8000480:	af00      	add	r7, sp, #0
  8000482:	6078      	str	r0, [r7, #4]
+	//uint8_t led;
 	for(uint8_t j=0; j < 32; j++){
  8000484:	230f      	movs	r3, #15
  8000486:	18fb      	adds	r3, r7, r3

@@ -52,11 +52,25 @@ static const uint32_t reg_values[3][10] = {
                 0b0111000000001111 << 0,
                 0b0110000000001111 << 0,
        },
+	   {
+	    //PCDE--------GFAB @ DIS3
+	                   0b0000000000000000 << 16,
+	                   0b0000000100000000 << 16,
+	                   0b0000001100000000 << 16,
+	                   0b0000011100000000 << 16,
+	                   0b0000111100000000 << 16,
+	                   0b0000111110000000 << 16,
+	                   0b0000111111000000 << 16,
+	                   0b0000111111100000 << 16,
+	                   0b0000111111110000 << 16,
+	                   0b0110000000001111 << 16,
+	          },
  };
 
 
 void sct_led(uint32_t value)
 {
+	//uint8_t led;
 	for(uint8_t j=0; j < 32; j++){
 		HAL_GPIO_WritePin(SCT_SDI_GPIO_Port, SCT_SDI_Pin, value&1);
 		value >>= 1;
@@ -81,7 +95,7 @@ void sct_init(void)
 
 }
 
-void sct_value(uint16_t value){
+void sct_value(uint16_t value, uint8_t led){
 
 	uint32_t reg = 0;
 
@@ -93,7 +107,7 @@ void sct_value(uint16_t value){
 	reg |= reg_values[0][value / 100 % 10];  //vyberu jednotku
 	reg |= reg_values[1][value / 10 % 10];
 	reg |= reg_values[2][value / 1 % 10];
-
+	reg |= reg_values[3][led];
 	sct_led(reg);
 
 
