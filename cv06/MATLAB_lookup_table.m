@@ -17,14 +17,14 @@ hold on
 ad2=0:1023;
 t2 = round(polyval(p,ad2),1);
 
- hold on
+
 plot(ad2,t2,'r');
-% 
-% hold on
-% xlabel('ADC value') 
-% ylabel('Temperature [°C]') 
-% 
-% dlmwrite('data.dlm', t2*10,',');
+
+hold on
+xlabel('ADC value') 
+ylabel('Temperature [°C]') 
+
+dlmwrite('data.dlm', t2*10,',');
 
 
 
