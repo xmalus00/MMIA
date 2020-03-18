@@ -1336,13 +1336,13 @@ int main(void)
  80008fc:	0018      	movs	r0, r3
  80008fe:	f000 fc1d 	bl	800113c <HAL_Delay>
 
-	  			if (OWReadTemperature(&temp_18b20)!=0) // Funkce OWReadTemperature() je uspesna v pripade nenulove hodnoty
+	  			if (OWReadTemperature(&temp_18b20)!=0)            // Funkce OWReadTemperature() je uspesna v pripade nenulove hodnoty
  8000902:	1cbb      	adds	r3, r7, #2
  8000904:	0018      	movs	r0, r3
  8000906:	f7ff ff43 	bl	8000790 <OWReadTemperature>
  800090a:	1e03      	subs	r3, r0, #0
  800090c:	d02d      	beq.n	800096a <main+0x10a>
-	  			{                                      // yaokrouhleni
+	  			{                                                 // yaokrouhleni
 	  				uint8_t i = temp_18b20%10;
  800090e:	1cbb      	adds	r3, r7, #2
  8000910:	2200      	movs	r2, #0
@@ -1420,7 +1420,7 @@ int main(void)
  800098c:	0002      	movs	r2, r0
  800098e:	1dbb      	adds	r3, r7, #6
  8000990:	801a      	strh	r2, [r3, #0]
-	  			sct_value(ADC_temp_value[adc_value],0); //Vycitani a zobrazeni AD hodnoty
+	  			sct_value(ADC_temp_value[adc_value],0);            //Vycitani a zobrazeni AD hodnoty
  8000992:	1dbb      	adds	r3, r7, #6
  8000994:	2200      	movs	r2, #0
  8000996:	5e9a      	ldrsh	r2, [r3, r2]
