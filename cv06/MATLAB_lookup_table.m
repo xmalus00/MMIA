@@ -12,8 +12,7 @@ figure
 plot(ADval,temperature,'o');
 hold on
 
- p=polyfit(ADval,temperature,10);
-
+p=polyfit(ADval,temperature,10);
 ad2=0:1023;
 t2 = round(polyval(p,ad2),1);
 
