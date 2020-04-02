@@ -109,11 +109,7 @@ int _write(int file, char const *buf, int n)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  lis2dw12_full_scale_set(&lis2dw12, LIS2DW12_2g);
-  lis2dw12_power_mode_set(&lis2dw12, LIS2DW12_CONT_LOW_PWR_LOW_NOISE_2);
-  lis2dw12_block_data_update_set(&lis2dw12, PROPERTY_ENABLE);
-  lis2dw12_fifo_mode_set(&lis2dw12, LIS2DW12_STREAM_MODE); // enable continuous FIFO
-  lis2dw12_data_rate_set(&lis2dw12, LIS2DW12_XL_ODR_25Hz); // enable part from power-down
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -137,7 +133,14 @@ int main(void)
   MX_USART2_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
+
   printf("Hello\n");
+
+  lis2dw12_full_scale_set(&lis2dw12, LIS2DW12_2g);
+  lis2dw12_power_mode_set(&lis2dw12, LIS2DW12_CONT_LOW_PWR_LOW_NOISE_2);
+  lis2dw12_block_data_update_set(&lis2dw12, PROPERTY_ENABLE);
+  lis2dw12_fifo_mode_set(&lis2dw12, LIS2DW12_STREAM_MODE); // enable continuous FIFO
+  lis2dw12_data_rate_set(&lis2dw12, LIS2DW12_XL_ODR_25Hz); // enable part from power-down
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
