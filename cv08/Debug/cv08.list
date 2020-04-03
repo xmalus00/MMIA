@@ -1409,8 +1409,11 @@ static void MX_GPIO_Init(void)
  8000bac:	40020000 	.word	0x40020000
 
 08000bb0 <HAL_TIM_PeriodElapsedCallback>:
-
-/* USER CODE BEGIN 4 */
+//****************************************************************************************//
+// obsluha časové základny,  skenování maticové klávesnice
+// Obsluha je „obrácená“, tj. nejdříve se testují sloupce pro řádek aktivovaný
+//v předchozím kroku a následně se vybere řádek pro příští krok
+//****************************************************************************************//
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
  8000bb0:	b580      	push	{r7, lr}
  8000bb2:	b082      	sub	sp, #8

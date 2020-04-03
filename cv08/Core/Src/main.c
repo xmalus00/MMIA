@@ -405,6 +405,11 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+//****************************************************************************************//
+// obsluha časové základny,  skenování maticové klávesnice
+// Obsluha je „obrácená“, tj. nejdříve se testují sloupce pro řádek aktivovaný
+//v předchozím kroku a následně se vybere řádek pro příští krok
+//****************************************************************************************//
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   static int row = 0;
   static const int keyboard[4][4] = {
