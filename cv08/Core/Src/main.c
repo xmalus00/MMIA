@@ -148,6 +148,9 @@ int main(void)
 	    if (check >= 5) {
 	    	printf("right combination\n");
 	    	check = 0;
+	    	HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_SET);
+	    	HAL_Delay(1000);
+	    	HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_RESET);
 	    }
 
 	    HAL_Delay(250);
