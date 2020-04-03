@@ -657,10 +657,10 @@ int main(void)
 	        }
 	    }
 
-	    if (check >= 5) {
+	    if (check == 5) {
  80006e4:	7bfb      	ldrb	r3, [r7, #15]
- 80006e6:	2b04      	cmp	r3, #4
- 80006e8:	d912      	bls.n	8000710 <main+0x118>
+ 80006e6:	2b05      	cmp	r3, #5
+ 80006e8:	d112      	bne.n	8000710 <main+0x118>
 	    	printf("right combination\n");
  80006ea:	4817      	ldr	r0, [pc, #92]	; (8000748 <main+0x150>)
  80006ec:	f002 fd1c 	bl	8003128 <puts>

@@ -145,7 +145,7 @@ int main(void)
 	        }
 	    }
 
-	    if (check >= 5) {
+	    if (check == 5) {
 	    	printf("right combination\n");
 	    	check = 0;
 	    	HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_SET);
