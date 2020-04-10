@@ -76,7 +76,7 @@ void circle(uint16_t radius) {
 
 	float x = 0, y = 0;
 	float sx = 0, sy = 0;
-	uint8_t par_x, par_y,i;
+	uint8_t par_x, par_y;
 
 	for(uint8_t i = 0; i < STEP; i++) {
 		x = radius * cos((2 * PI * i)/STEP);
